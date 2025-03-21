@@ -1,30 +1,24 @@
-n = int(input())
-arr = list(map(int,input().split()))
-arr.sort()
+def salt(start,end):
+    best = float('inf')
+    answer = (0,0)
+    while start<end:
+        sum = A[start]+A[end]
+        if abs(sum) < abs(best):
+            best = sum
+            answer = (A[start],A[end])
+        if sum < 0:
+            start += 1
+        else:
+            end -= 1
+    return answer
 
-pl = 0
-pr = n-1
-best_res = float('inf')
+N = int(input())
+A = sorted(list(map(int,input().split())))
 
-left = arr[pl]
-right = arr[pr]
-best_pair = (0,0)
 
-while pl<pr:
-    sum_ = arr[pl] + arr[pr]
-    
-    if abs(sum_) < best_res:
-        best_res = abs(sum_)
-        best_pair = (arr[pl],arr[pr])
-        
-    if sum_ == 0:
-        break
-       
-    elif sum_ < 0:
-        pl += 1
-    
-    else:
-        pr -= 1
-        
-    
-print(best_pair[0], best_pair[1])
+start = 0
+end = len(A)-1
+result = salt(start,end)
+if len(A) == 2:
+    print(f"{A[0]} {A[1]}")
+else: print(*result)
