@@ -13,17 +13,18 @@ for i in range(len(money_list)):
         if (money_list[i]%5)%2!=0:
             dp[i] = (money_list[i]//5)-1
             money_list[i] = money_list[i]-((money_list[i]//5)-1)*5
-            count += dp[i]
+           
         else:
             dp[i] = money_list[i]//5
             money_list[i] %= 5
-            count += dp[i]
+           
             
 for i in range(len(money_list)):
     if 2<=money_list[i]:
         
         dp[i] += money_list[i]//2
         money_list[i] %= 2
+        
     
 
 if money_list[n] != 0:
